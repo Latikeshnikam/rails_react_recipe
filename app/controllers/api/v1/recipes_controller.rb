@@ -1,13 +1,13 @@
 class Api::V1::RecipesController < ApplicationController
   def index
     recipe = Recipe.all.order(created_at: :desc)
-    return json: recipe
+    render json: recipe
   end
 
   def create
     recipe = Recipe.create!(recipe_params)
     if recipe
-      return json: recipe
+      render json: recipe
     else
       render json: recipe.errors
     end
